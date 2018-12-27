@@ -22,3 +22,9 @@ All the code written while taking the [Object Oriented Programming in Java Speci
 ## Java Programming: Solving Problems with Software
 
 The resources for the [Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming) course are available at [www.dukelearntoprogram.com](http://www.dukelearntoprogram.com) in the course's [page](http://www.dukelearntoprogram.com/course2).
+
+### Week 1
+
+#### Getting Started
+
+The HelloWorld program is stored in the branch [course1/week1/hello-world](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/hello-world).
