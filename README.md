@@ -28,3 +28,7 @@ The resources for the [Java Programming: Solving Problems with Software](https:/
 #### Getting Started
 
 The HelloWorld program is stored in the branch [course1/week1/hello-world](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/hello-world).
+
+#### Classes, Types and For Each Loops
+
+The support code for the video *For Each Loops* is stored in the branch [course1/week1/for-each-loops](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/for-each-loops). 
