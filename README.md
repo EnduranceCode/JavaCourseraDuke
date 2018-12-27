@@ -18,3 +18,7 @@ There are four Courses in this Specialization:
 All the code written while taking the [Object Oriented Programming in Java Specialization](https://www.coursera.org/specializations/object-oriented-programming) will be stored in different branches of this repository. This approach is taken in order avoid having this [GitHub account](https://github.com/EnduranceCode) bloated and cluttered with many repositories holding very small projects.
 
 [Blue J](https://www.bluej.org/) will no be used in the coding tasks of this Specialization because the goal is to gain more proficiency with [Eclipse](https://www.eclipse.org) and therefore, all the necessary code will be written with Eclipse.
+
+## Java Programming: Solving Problems with Software
+
+The resources for the [Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming) course are available at [www.dukelearntoprogram.com](http://www.dukelearntoprogram.com) in the course's [page](http://www.dukelearntoprogram.com/course2).
