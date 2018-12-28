@@ -5,7 +5,7 @@ public class PerimeterAssignmentRunner {
     public double getPerimeter (Shape s) {
         // Start with totalPerim = 0
         double totalPerim = 0.0;
-        // Start wth prevPt = the last point 
+        // Start with prevPt = the last point 
         Point prevPt = s.getLastPoint();
         // For each point currPt in the shape,
         for (Point currPt : s.getPoints()) {
@@ -21,8 +21,15 @@ public class PerimeterAssignmentRunner {
     }
 
     public int getNumPoints (Shape s) {
-        // Put code here
-        return 0;
+        /* Track the number of points */
+    	int numberPoints = 0;
+    	for (Point point : s.getPoints()) {
+    		if (point != null) {
+        		numberPoints += 1;
+    		}
+    	}
+    	
+        return numberPoints;
     }
 
     public double getAverageLength(Shape s) {
