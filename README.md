@@ -23,6 +23,8 @@ All the code written while taking the [Object Oriented Programming in Java Speci
 
 The resources for the [Java Programming: Solving Problems with Software](https://www.coursera.org/learn/java-programming) course are available at [www.dukelearntoprogram.com](http://www.dukelearntoprogram.com) in the course's [page](http://www.dukelearntoprogram.com/course2).
 
+The documentation for the **Course Code Packages** *edu.duke* and *org.apache.commons.csv*, available in the resources of this course (and included in the `lib/` folder of this repository), is available at the [Course Class Documentation](http://www.dukelearntoprogram.com/course2/doc/javadoc/index.html?course=2) pages.
+
 ### Week 1
 
 #### Getting Started
