@@ -31,4 +31,8 @@ The HelloWorld program is stored in the branch [course1/week1/hello-world](https
 
 #### Classes, Types and For Each Loops
 
-The support code for the video *For Each Loops* is stored in the branch [course1/week1/for-each-loops](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/for-each-loops). 
+The support code for the video *For Each Loops* is stored in the branch [course1/week1/for-each-loops](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/for-each-loops).
+
+#### Seven Steps for Solving Programming Problems
+
+The support code for the video *Seven Steps in Action: Translating to Code* is stored in the branch [course1/week1/seven-steps](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/seven-steps).
