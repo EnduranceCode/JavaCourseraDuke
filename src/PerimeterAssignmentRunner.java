@@ -122,6 +122,9 @@ public class PerimeterAssignmentRunner {
         
         /* Test the getAverageLength method */
         System.out.println("Average Length = " + getAverageLength(s));
+        
+        /* Test the getLargestSide method */
+        System.out.println("Length of the largest side = " + getLargestSide(s));
     }
     
     public void testPerimeterMultipleFiles() {
