@@ -33,8 +33,37 @@ public class PerimeterAssignmentRunner {
     }
 
     public double getAverageLength(Shape s) {
-        // Put code here
-        return 0.0;
+        
+    	/* Track the total length and start with zero */
+    	double totalLength = 0;
+    	
+    	/* Track the number of sides and start with zero */
+    	int numberSides = 0;
+    	
+    	/* Track the previous point and start with the last point of the shape */
+    	Point previousPoint = s.getLastPoint();
+    	
+    	/* 
+    	 * For each current point of the shape
+    	 * add the length to the previous point and count the number of sides of the shape
+    	 */
+    	for (Point currentPoint : s.getPoints()) {
+    		
+    		/*
+    		 * Add to the total length 
+    		 * the distance from the previous point to the current point 
+    		 */
+    		totalLength += previousPoint.distance(currentPoint);
+    		
+    		/* Increase by one the number of sides of the shape */
+    		numberSides += 1;
+    		
+    		/* Update the previous point to the current point */
+    		previousPoint = currentPoint;
+    	}
+    	
+    	/* Calculate and return the average length */
+        return totalLength / numberSides;
     }
 
     public double getLargestSide(Shape s) {
