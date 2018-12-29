@@ -180,7 +180,9 @@ public class PerimeterAssignmentRunner {
     }
     
     public void testPerimeterMultipleFiles() {
-        // Put code here
+    	
+         /* Call the method getLargestPerimeterMultipleFiles and print out the result */
+    	System.out.println("Largest Perimeter = " + getLargestPerimeterMultipleFiles());
     }
 
     public void testFileWithLargestPerimeter() {
@@ -210,6 +212,6 @@ public class PerimeterAssignmentRunner {
 
     public static void main (String[] args) {
         PerimeterAssignmentRunner pr = new PerimeterAssignmentRunner();
-        pr.testPerimeter();
+        pr.testPerimeterMultipleFiles();
     }
 }
