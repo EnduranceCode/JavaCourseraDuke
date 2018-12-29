@@ -39,4 +39,10 @@ The support code for the video *For Each Loops* is stored in the branch [course1
 
 The support code for the video *Seven Steps in Action: Translating to Code* is stored in the branch [course1/week1/seven-steps](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/seven-steps).
 
-The code written for the exercise *Calculating the Perimeter of a Shape* is stored in the branch  [course1/week1/calculating-perimeter](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/calculating-perimeter).
+The code written for the exercise *Calculating the Perimeter of a Shape* is stored in the branch [course1/week1/calculating-perimeter](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/calculating-perimeter).
+
+### Week 2
+
+#### Finding a Gene in DNA
+
+The support code for the video *Translating into Code* is stored in the branch [course1/week2/find-gene-simple](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/find-gene-simple).
