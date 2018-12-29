@@ -96,8 +96,31 @@ public class PerimeterAssignmentRunner {
     }
 
     public double getLargestX(Shape s) {
-        // Put code here
-        return 0.0;
+        
+    	/* 
+    	 * Track the largest x coordinate
+    	 *  and start it with the value of the x coordinate of the last point
+    	 */
+    	double largestX = s.getLastPoint().getX();
+    	
+    	/*
+    	 * For each point in the shape, get the x coordinate 
+    	 * and check if it is larger than the actual largest x coordinate
+    	 */
+    	for (Point currentPoint : s.getPoints()) {
+    		
+    		/* Get the x coordinate from the current point */
+    		double currentX = currentPoint.getX();
+    		
+    		/* Check if the x coordinate of the current point is larger than the actual largest x coordinate */
+    		if (currentX > largestX) {
+    			
+    			/* Update the largest x coordinate */
+    			largestX = currentX;
+    		}
+    		
+    	}
+        return largestX;
     }
 
     public double getLargestPerimeterMultipleFiles() {
