@@ -95,6 +95,9 @@ public class PerimeterAssignmentRunner {
         
         /* Test the getNumPoints() method */
         System.out.println("Number of Points = " + getNumPoints(s));
+        
+        /* Test the getAverageLength method */
+        System.out.println("Average Length = " + getAverageLength(s));
     }
     
     public void testPerimeterMultipleFiles() {
