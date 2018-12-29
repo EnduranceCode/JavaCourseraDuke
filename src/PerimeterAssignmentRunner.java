@@ -148,6 +148,9 @@ public class PerimeterAssignmentRunner {
         
         /* Test the getLargestSide method */
         System.out.println("Length of the largest side = " + getLargestSide(s));
+        
+        /* Test the getLargestX method */
+        System.out.println("Largest x coordinate = " + getLargestX(s));
     }
     
     public void testPerimeterMultipleFiles() {
