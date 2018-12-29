@@ -124,8 +124,34 @@ public class PerimeterAssignmentRunner {
     }
 
     public double getLargestPerimeterMultipleFiles() {
-        // Put code here
-        return 0.0;
+
+    	/* Track largest perimeter and start it with zero */
+    	double largestPerimeter = 0;
+    	
+    	/* Get multiple files */
+    	DirectoryResource directoryResource = new DirectoryResource();
+    	
+    	/* Iterate through each file in the DirectoryResource */
+    	for (File currentFile : directoryResource.selectedFiles()) {
+    		
+			/* Read the current file and get a FileResource object */
+    		FileResource currentFileResource = new FileResource(currentFile);
+			
+    		/* Get the shape from the current file resource */
+    		Shape currentShape = new Shape(currentFileResource);
+    		
+    		/* Get the perimeter from the current shape */
+    		double currentPerimeter = getPerimeter(currentShape);
+    		
+    		/* Check if the current perimeter is larger than the actual current perimeter */
+    		if (currentPerimeter > largestPerimeter) {
+    			
+    			/* Update the largest perimeter */
+    			largestPerimeter = currentPerimeter;
+    		}
+		}
+
+        return largestPerimeter;
     }
 
     public String getFileWithLargestPerimeter() {
