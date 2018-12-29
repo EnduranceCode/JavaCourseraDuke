@@ -1,5 +1,6 @@
 import edu.duke.*;
 import java.io.File;
+import java.util.Iterator;
 
 public class PerimeterAssignmentRunner {
     public double getPerimeter (Shape s) {
@@ -143,7 +144,7 @@ public class PerimeterAssignmentRunner {
     		/* Get the perimeter from the current shape */
     		double currentPerimeter = getPerimeter(currentShape);
     		
-    		/* Check if the current perimeter is larger than the actual current perimeter */
+    		/* Check if the current perimeter is larger than the actual largest perimeter */
     		if (currentPerimeter > largestPerimeter) {
     			
     			/* Update the largest perimeter */
@@ -155,9 +156,41 @@ public class PerimeterAssignmentRunner {
     }
 
     public String getFileWithLargestPerimeter() {
-        // Put code here
-        File temp = null;    // replace this code
-        return temp.getName();
+        
+    	/* Track largest perimeter and start it with zero */
+    	double largestPerimeter = 0;
+    	
+    	/* Track file with largest perimeter */
+        File fileLargestPerimeter = null;
+
+        /* Get multiple files */
+        DirectoryResource directoryResource = new DirectoryResource();
+        
+        /* Iterate through each file in the DirectoryResource */
+        for (File currentFile : directoryResource.selectedFiles()) {
+			
+        	/* Read the current file and get the a FileResource object */
+        	FileResource currentFileResource = new FileResource(currentFile);
+        	
+        	/* Get the Shape object from the current FileResource object */
+        	Shape currentShape = new Shape(currentFileResource);
+        	
+        	/* Get the perimeter from the current shape */
+        	double currentPerimeter = getPerimeter(currentShape);
+        	
+        	/* Check if the current perimeter is larger than the actual largest perimeter */
+        	if (currentPerimeter > largestPerimeter) {
+				
+        		/* Update the largest perimeter */
+        		largestPerimeter = currentPerimeter;
+        		
+        		/* Update the file with the largest perimeter */
+        		fileLargestPerimeter = currentFile;
+			}
+		}
+        
+        /* Get and return the name of the file with the largest perimeter */
+        return fileLargestPerimeter.getName();
     }
 
     public void testPerimeter () {
