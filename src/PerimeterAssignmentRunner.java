@@ -67,8 +67,32 @@ public class PerimeterAssignmentRunner {
     }
 
     public double getLargestSide(Shape s) {
-        // Put code here
-        return 0.0;
+    	
+        /* Track the length of the largest side and start it with zero */
+    	double largestSide = 0;
+    	
+    	/* Track the previous point and start with the last point of the shape */
+    	Point previousPoint = s.getLastPoint();
+    	
+    	/*
+    	 * For each point of the shape, calculate the distance to the previous point
+    	 * and check if it is the largest side
+    	 */
+    	for (Point currentPoint : s.getPoints()) {
+    		
+    		/* Calculate the current length */
+    		double currentLength = currentPoint.distance(previousPoint);
+    		
+    		/* Check if the current length is longer than the actual largest side */
+    		if (currentLength > largestSide) {
+    			
+    			/* Update the largest side */
+    			largestSide = currentLength;
+    		}
+    	}
+    	
+    	/* Return the largest side of the shape */
+        return largestSide;
     }
 
     public double getLargestX(Shape s) {
