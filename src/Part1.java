@@ -92,7 +92,7 @@ public class Part1 {
 		/* Print out the found Gene */
 		System.out.println("Gene is " + findSimpleGene(dna4));
 		
-		/* Test string with ATG, TAA and the substring between them is a multiple of 3 */
+		/* Test string with ATG, TAA and the substring between them is NOT a multiple of 3 */
 		String dna5 = "ATGATCCGGCTGTCTATGGTAA";
 		
 		/* Print out the input DNA */
