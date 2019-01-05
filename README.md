@@ -50,3 +50,7 @@ The support code for the video *Translating into Code* is stored in the branch [
 #### Strings First Assignment
 
 The code written for the exercise *Finding a Gene in DNA* is stored in the branch [course1/week2/find-gene-assignment](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/find-gene-assignment).
+
+#### Strings Second Assignment
+
+The code written for the exercise *Finding many Genes* is stored in the branch [course1/week2/find-many-genes-assignment](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/ind-many-genes-assignment).
