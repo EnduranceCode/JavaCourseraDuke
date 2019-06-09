@@ -37,7 +37,7 @@ public class Part1 {
 			return gene;
 		}
 		
-		/* There's a start codon and a stopo codon,
+		/* There's a start codon and a stop codon,
 		 * so we will get the string that start and stops with these codons
 		 */
 		gene = dna.substring(startIndex, stopIndex + 3);

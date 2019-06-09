@@ -13,7 +13,7 @@ public class Part4 {
 		/* Read the file in the given URL, word by word */
 		for (String word : urlResource.words()) {
 			
-			/* Set the word to lowercase */
+			/* Set the word to lower case */
 			String lowerCaseWord = word.toLowerCase();
 			
 			/* Get the index of "youtube.com" in the word */
@@ -24,7 +24,7 @@ public class Part4 {
 				
 				/* 
 				 * "youtube.com" is included in the word, so we look for the full URL,
-				 * strating with the beggining of the URL
+				 * Starting with the beginning of the URL
 				 */
 				int startIndex = lowerCaseWord.lastIndexOf('\"', indexYoutubeCom) + 1;
 				
