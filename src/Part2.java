@@ -6,7 +6,7 @@ public class Part2 {
 	 * 
 	 * @param dna        DNA string to search for a gene
 	 * @param startCodon Start codon of the gene
-	 * @param stopCodon  Stop codon of the gen
+	 * @param stopCodon  Stop codon of the gene
 	 * @return           The found gene or an empty string if no gene is found
 	 */
 	public String findSimpleGene(String dna, String startCodon, String stopCodon) {
@@ -43,7 +43,7 @@ public class Part2 {
 			return gene;
 		}
 		
-		/* There's a start codon and a stopo codon,
+		/* There's a start codon and a stop codon,
 		 * so we will get the string that start and stops with these codons
 		 */
 		gene = dna.substring(startIndex, stopIndex + 3);
