@@ -28,7 +28,7 @@ public class Part1 {
 			 * Check if the stop codon is present
 			 * and if the result substring between the start codon and the stop codon has a length multiple of 3
 			 */
-			if ((currentIndex != -1) && ((currentIndex - startIndex) % 3 == 0)) {
+			if ((currentIndex != -1) && ((startIndex - currentIndex) % 3 == 0)) {
 				
 				/* A stop codon for a valid gene was found, so we return the stop codon */
 				return currentIndex;
@@ -46,8 +46,8 @@ public class Part1 {
 	/**
 	 * Search for a valid gene in a given DNA strand
 	 * 
-	 * @param dna Given DNA strand to search for a valid gene
-	 * @return a valid gene or an empty string if no gene is found
+	 * @param	dna Given DNA strand to search for a valid gene
+	 * @return	Valid gene or an empty string if no gene is found
 	 */
 	public String findGene(String dna) {
 		
@@ -68,7 +68,7 @@ public class Part1 {
 		} else {
 			
 			/*
-			 * There is a strand codon, so we search for a stop codon
+			 * There is a start codon, so we search for a stop codon
 			 * First, we look for an "TAA" stop codon
 			 */
 			int stopCodonTAA = findStopCodon(upperCaseDNA, startIndex, "TAA");
@@ -101,8 +101,8 @@ public class Part1 {
 	/**
 	 * Search for ALL valid genes in a given DNA strand
 	 * 
-	 * @param dna Given DNA strand to search for a valid gene
-	 * @return ALL valid genes or an empty string if no gene is found
+	 * @param	dna Given DNA strand to search for a valid gene
+	 * @return	ALL valid genes or an empty string if no gene is found
 	 */
 	public String findAllGenes(String dna) {
 		
@@ -122,7 +122,7 @@ public class Part1 {
 			} else {
 				
 				/*
-				 * There is a strand codon, so we search for a stop codon
+				 * There is a start codon, so we search for a stop codon
 				 * First, we look for an "TAA" stop codon
 				 */
 				int stopCodonTAA = findStopCodon(upperCaseDNA, startIndex, "TAA");
@@ -142,13 +142,17 @@ public class Part1 {
 					 */
 					int stopCodon = Math.min(Math.min(stopCodonTAA, stopCodonTAG), stopCodonTGA);
 					
-					/* And we then print the found gene */
+					/* We then print the found gene */
 					System.out.println(dna.substring(startIndex, stopCodon + 3));
+					
+					/* And we look for another start codon after the end of the found gene */
+					startIndex = upperCaseDNA.indexOf("ATG", stopCodon + 3);
+				} else {
+					
+					/* There is no stop codon, so we look for a new start codon after the previous found start codon */
+					startIndex = upperCaseDNA.indexOf("ATG", startIndex + 3);
 				}
 			}
-			
-			/* search for another start codon */
-			startIndex = upperCaseDNA.indexOf("ATG", startIndex + 1);
 		}
 		
 		/* There are no more genes, if any, in the DNA strand, so we return an empty string */
@@ -241,6 +245,12 @@ public class Part1 {
 		
 		/* DNA with two start codons and two genes */
 		dna = "ATGTAAaaaATGbbbTGA";
+		System.out.println(DNA + dna);
+		findAllGenes(dna);
+		System.out.println();
+		
+		/* */
+		dna = "ATGATGBTAABBTAAATG";
 		System.out.println(DNA + dna);
 		findAllGenes(dna);
 		System.out.println();
