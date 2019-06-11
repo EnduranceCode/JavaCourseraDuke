@@ -8,11 +8,11 @@ public class DebuggingQuiz {
 	        }
 	        String found = input.substring(index+1, index+4);
 	        System.out.println(found);
-	        index = input.indexOf("abc", index+4);
+	        index = input.indexOf("abc",index+3);
 	    }
 	}
 	   public void test() {
-		   findAbc("abcdkfjsksioehgjfhsdjfhksdfhuwabcabcajfieowj");
+		   findAbc("abcabcabcabca");
 	}
 	public static void main(String[] args) {
 		DebuggingQuiz debuggingQuiz = new DebuggingQuiz();
