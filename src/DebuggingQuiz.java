@@ -12,7 +12,7 @@ public class DebuggingQuiz {
 	    }
 	}
 	   public void test() {
-		   findAbc("abcdabc");
+		   findAbc("abcdkfjsksioehgjfhsdjfhksdfhuwabcabcajfieowj");
 	}
 	public static void main(String[] args) {
 		DebuggingQuiz debuggingQuiz = new DebuggingQuiz();
