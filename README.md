@@ -58,3 +58,7 @@ The code written for the exercise *Finding many Genes* is stored in the branch [
 #### Practice Quiz: Debugging Code
 
 The code written to solve the Quizzes in the *Debugging Code* section is stored in the branch [course1/week2/debugging](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/debugging).
+
+#### Strings Third Assignment
+
+The code written for the assignment *StorageResource Class* is stored in the branch [course1/week2/storage-resource-class](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/storage-resource-class).
