@@ -233,9 +233,32 @@ public class Part3 {
 		processGenes(genesStorageResource);
 	}
 	
+	public	void quizAnswers() {
+		FileResource fileResource = new FileResource("GRch38dnapart.fa");
+		String dna = fileResource.asString();
+		StorageResource fileStorageResource = new StorageResource();
+		fileStorageResource.add(dna);
+		StorageResource genesStorageResource = extractGenes(fileStorageResource);
+		
+		/* Count Genes in the file */
+		System.out.println("Number of genes in the file: " + genesStorageResource.size());
+		System.out.println("\n");
+		
+		/* Count the codon CTG in the given DNA strand */
+		Part2 part2 = new Part2();
+		System.out.println("Number codon CTG in the file: " + part2.countCTG(dna));
+		System.out.println("\n");
+		
+		processGenes(genesStorageResource);
+	}
+	
 	public static void main(String[] args) {
 		Part3 part3 = new Part3();
 		part3.testProcessGenes();
+		
+		System.out.println("FINAL QUIZ ANSWERS");
+		System.out.println("\n");
+		part3.quizAnswers();
 	}
 
 }
