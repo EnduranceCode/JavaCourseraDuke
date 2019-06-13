@@ -44,18 +44,47 @@ public class ParsingExportData {
 		}
 	}
 	
+	/**
+	 * This method returns the number of countries that export a given item
+	 * 
+	 * @param parser
+	 * @param exportItem
+	 * @return
+	 */
+	public int numberOfExporters(CSVParser parser, String exportItem) {
+		
+		int numberOfExporters = 0;
+		
+		for (CSVRecord record : parser) {
+			
+			String exports = record.get("Exports");
+			
+			if (exports.contains(exportItem)) {
+				numberOfExporters += 1;
+			}
+		}
+		
+		return numberOfExporters;
+	}
+	
 	public void tester() {
 		FileResource fileResource = new FileResource("exports_small.csv");
 		CSVParser parser = fileResource.getCSVParser();
 		
-		System.out.println("CountryInfo Output:");
+		System.out.println("CountryInfo() Output:");
 		System.out.println(countryInfo(parser, "Germany"));
 		System.out.println("\n");
 		
 		parser = fileResource.getCSVParser();
 
-		System.out.println("listExportersTwoProducts:");
+		System.out.println("listExportersTwoProducts() Output:");
 		listExportersTwoProducts(parser, "gold", "diamonds");
+		System.out.println("\n");
+		
+		parser = fileResource.getCSVParser();
+
+		System.out.println("numberOfExporters() Output:");
+		System.out.println(numberOfExporters(parser, "gold"));
 		System.out.println("\n");
 	}
 
