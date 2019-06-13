@@ -67,6 +67,25 @@ public class ParsingExportData {
 		return numberOfExporters;
 	}
 	
+	/**
+	 * This method prints the names of countries and their Value amount for all countries whose
+	 * Value (dollars) string is longer than the amount string
+	 * @param parser
+	 * @param amount
+	 */
+	public void bigExporters(CSVParser parser, String amount) {
+		
+		for (CSVRecord record : parser) {
+			
+			String value = record.get("Value (dollars)");
+			
+			if (value.length() > amount.length()) {
+				System.out.println(record.get("Country") + " " + value);
+			}
+		}
+		
+	}
+	
 	public void tester() {
 		FileResource fileResource = new FileResource("exports_small.csv");
 		CSVParser parser = fileResource.getCSVParser();
@@ -85,6 +104,12 @@ public class ParsingExportData {
 
 		System.out.println("numberOfExporters() Output:");
 		System.out.println(numberOfExporters(parser, "gold"));
+		System.out.println("\n");
+		
+		parser = fileResource.getCSVParser();
+
+		System.out.println("bigExporters() Output:");
+		bigExporters(parser, "$999,999,999");
 		System.out.println("\n");
 	}
 
