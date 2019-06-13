@@ -68,3 +68,7 @@ The code written for the assignment *StorageResource Class* is stored in the bra
 #### Assignment: Parsing Export Data
 
 The code written for the assignment *Parsing Export Data* is stored in the branch [course1/week3/assignment-parsing-export-data](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week3/assignment-parsing-export-data).
+
+#### Assignment: Parsing Weather Data
+
+The code written for the assignment *Parsing Weather Data* is stored in the branch [course1/week3/assignment-parsing-weather-data](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week3/assignment-parsing-weather-data).
