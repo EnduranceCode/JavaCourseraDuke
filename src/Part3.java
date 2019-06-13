@@ -1,7 +1,6 @@
 import edu.duke.StorageResource;
 import edu.duke.FileResource;
 
-
 public class Part3 {
 	
 	/**
@@ -19,11 +18,11 @@ public class Part3 {
 	 */
 	public void processGenes (StorageResource storageResource) {
 		
-		/* Stores the strings longer than 9 characters */
+		/* Stores the strings longer than 60 characters */
 		StorageResource stringsLongerNine = new StorageResource();
 		
-		/* Tracks the number of strings longer than 9 characters */
-		int countLongerNine = 0;
+		/* Tracks the number of strings longer than 60 characters */
+		int countLongerSixty = 0;
 		
 		/* Stores the strings with C-G-ratio higher than 0.35 */
 		StorageResource stringsCGRatioHigher035 = new StorageResource();
@@ -31,7 +30,7 @@ public class Part3 {
 		/* Tracks the number of strings whose C-G-ratio is higher than 0.35 */
 		int countCGRatioHigher035 = 0;
 		
-		/* Stores the valid genes in the given StorageResource */
+		/* Stores the valid genes extracted from the given StorageResource */
 		StorageResource genesStorageResource = extractGenes(storageResource);
 		
 		/* Tracks the length of the longest gene */
@@ -39,10 +38,10 @@ public class Part3 {
 		
 		for (String string : storageResource.data()) {
 			
-			/* Check strings longer than 9 characters */
-			if (string.length() > 9) {
+			/* Check strings longer than 60 characters */
+			if (string.length() > 60) {
 				stringsLongerNine.add(string);
-				countLongerNine += 1;
+				countLongerSixty += 1;
 			}
 			
 			/* Check strings with C-G-ratio higher than 0.35 */
@@ -58,17 +57,17 @@ public class Part3 {
 			}
 		}
 		
-		/* Print all the Strings in that are longer than 9 characters */
-		if (countLongerNine > 0) {
-			System.out.println("Strings longer than 9 characters:");
+		/* Print all the Strings that are longer than 60 characters */
+		if (countLongerSixty > 0) {
+			System.out.println("Strings longer than 60 characters:");
 			for (String string : stringsLongerNine.data()) {
 				System.out.println(string);
 			}
 			System.out.println("\n");
 		}
 		
-		/* Print the number of Strings longer than 9 characters */
-		System.out.println("The number of strings longer than 9 characters is " + countLongerNine);
+		/* Print the number of Strings longer than 60 characters */
+		System.out.println("The number of strings longer than 60 characters is " + countLongerSixty);
 		System.out.println("\n");
 		
 		/* Print the Strings whose C-G-ratio is higher than 0.35 */
@@ -129,7 +128,7 @@ public class Part3 {
 		
 		for (String string : storageResource.data()) {
 			
-			/* Set the given string to upper case */
+			/* Convert the given string to upper case */
 			String dna = string.toUpperCase();
 			
 			/* Track the start index of the gene in the given string */
@@ -160,7 +159,7 @@ public class Part3 {
 					int stopCodon = Math.min(Math.min(stopCodonTAA, stopCodonTAG), stopCodonTGA);
 					
 					/* We then add the found gene to the genesStorageResource */
-					genesStorageResource.add(dna.substring(startIndex, stopCodon + 3));
+					genesStorageResource.add(string.substring(startIndex, stopCodon + 3));
 					
 					/* And we look for another start codon after the end of the found gene */
 					startIndex = dna.indexOf("ATG", stopCodon + 3);
@@ -187,29 +186,33 @@ public class Part3 {
 	 */
 	public int findStopCodon(String dna, int startIndex, String stopCodon) {
 		
+		/* Convert given strings to upper case */
+		String dnaUpperCase = dna.toUpperCase();
+		String stopCodonUpperCase = stopCodon.toUpperCase();
+		
 		/*
 		 * Track the index of the current stop codon
 		 * We search for the first stop codon after the start codon
 		 * because it makes no sense to start looking for the stop codon
 		 * before the start codon
 		 */
-		int currentIndex = dna.indexOf(stopCodon, startIndex);
+		int currentIndex = dnaUpperCase.indexOf(stopCodonUpperCase, startIndex);
 		
 		/* Search for the stop codon in the DNA strand */
 		while (currentIndex != -1) {
 			
 			/*
-			 * Check if the stop codon is present
-			 * and if the result substring between the start codon and the stop codon has a length multiple of 3
+			 * A stop codon is present so we check if the result substring
+			 * between the start codon and the stop codon has a length multiple of 3
 			 */
-			if ((currentIndex != -1) && ((startIndex - currentIndex) % 3 == 0)) {
+			if ((startIndex - currentIndex) % 3 == 0) {
 				
 				/* A stop codon for a valid gene was found, so we return the stop codon */
 				return currentIndex;
 			} else {
 				
 				/* Search for the next stop codon */
-				currentIndex = dna.indexOf(stopCodon, currentIndex + 1);
+				currentIndex = dnaUpperCase.indexOf(stopCodonUpperCase, currentIndex + 1);
 			}
 		}
 		
@@ -222,16 +225,14 @@ public class Part3 {
 	 */
 	public void testProcessGenes() {
 		
-		StorageResource storageResource = new StorageResource();
-		storageResource.add("ATGTAAAAABBBCCCATGAAABBBCCCTAAATGAAABBBCCCTAG");
-		storageResource.add("ATGTAA");
-		storageResource.add("ATGAAABBBCCCCCCCCCCCCCCCCCCTAA");
-		storageResource.add("ATGAAABBBTAA");
-		storageResource.add("BBBATGAAABBBTAADDD");
-		
-		processGenes(storageResource);
+		FileResource fileResource = new FileResource("brca1line.fa");
+		String dna = fileResource.asString();
+		StorageResource fileStorageResource = new StorageResource();
+		fileStorageResource.add(dna);
+		StorageResource genesStorageResource = extractGenes(fileStorageResource);
+		processGenes(genesStorageResource);
 	}
-
+	
 	public static void main(String[] args) {
 		Part3 part3 = new Part3();
 		part3.testProcessGenes();
