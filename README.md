@@ -62,3 +62,9 @@ The code written to solve the Quizzes in the *Debugging Code* section is stored 
 #### Strings Third Assignment
 
 The code written for the assignment *StorageResource Class* is stored in the branch [course1/week2/storage-resource-class](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/storage-resource-class).
+
+### Week 3
+
+#### Assignment: Parsing Export Data
+
+The code written for the assignment *Parsing Export Data* is stored in the branch [course1/week3/assignment-parsing-export-data](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week3/assignment-parsing-export-data).
