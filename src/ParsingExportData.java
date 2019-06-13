@@ -111,6 +111,31 @@ public class ParsingExportData {
 		System.out.println("bigExporters() Output:");
 		bigExporters(parser, "$999,999,999");
 		System.out.println("\n");
+		
+		FileResource fileResourceQuiz = new FileResource("exportdata.csv");
+		CSVParser parserQuiz = fileResourceQuiz.getCSVParser();
+		
+		System.out.println("listExportersTwoProducts() Output for the Quiz:");
+		listExportersTwoProducts(parserQuiz, "gold", "diamonds");
+		System.out.println("\n");
+		
+		parserQuiz = fileResourceQuiz.getCSVParser();
+
+		System.out.println("numberOfExporters() Output for the Quiz:");
+		System.out.println(numberOfExporters(parserQuiz, "gold"));
+		System.out.println("\n");
+		
+		parserQuiz = fileResourceQuiz.getCSVParser();
+		
+		System.out.println("listExportersTwoProducts() Output for the Quiz:");
+		System.out.println(countryInfo(parserQuiz, "Nauru"));
+		System.out.println("\n");
+		
+		parserQuiz = fileResourceQuiz.getCSVParser();
+
+		System.out.println("bigExporters() Output for the Quiz:");
+		bigExporters(parserQuiz, "$999,999,999,999");
+		System.out.println("\n");
 	}
 
 	public static void main(String[] args) {
