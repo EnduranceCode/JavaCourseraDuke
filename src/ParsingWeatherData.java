@@ -32,7 +32,7 @@ public class ParsingWeatherData {
 	 * @param	parser
 	 * @return
 	 */
-	public CSVRecord hottestHourInFile (CSVParser parser) {
+	public CSVRecord hottestHourInFile(CSVParser parser) {
 		
 		CSVRecord hottestHourRecord = null;
 		
@@ -70,13 +70,32 @@ public class ParsingWeatherData {
 	}
 	
 	/**
-	 * This method returns chooses, out of two, the record with the hottest temperature
+	 * This method returns the CSVRecord with the coldest temperature in the file and thus
+	 * all the information about the coldest temperature, such as the hour of the coldest temperature
+	 * 
+	 * @param	parser
+	 * @return
+	 */
+	CSVRecord coldestHourInFile(CSVParser parser) {
+		
+		CSVRecord coldestHourRecord = null;
+		
+		for (CSVRecord currentRecord : parser) {
+			
+			coldestHourRecord = getColdestHourRecord(coldestHourRecord, currentRecord);
+		}
+		
+		return coldestHourRecord;
+	}
+
+	/**
+	 * This method chooses, out of two, the record with the hottest temperature
 	 * 
 	 * @param	firstRecord
 	 * @param	secondRecord
 	 * @return
 	 */
-	public CSVRecord getHottestHourRecord (CSVRecord firstRecord, CSVRecord secondRecord) {
+	public CSVRecord getHottestHourRecord(CSVRecord firstRecord, CSVRecord secondRecord) {
 		
 		if (firstRecord == null) {
 			return secondRecord;
@@ -92,13 +111,49 @@ public class ParsingWeatherData {
 		}
 	}
 	
-	public void testHottestHourInFile () {
+	/**
+	 * This method chooses, out of two, the record with the coldest temperature
+	 * 
+	 * @param	firstRecord
+	 * @param	secondRecord
+	 * @return
+	 */
+	public CSVRecord getColdestHourRecord(CSVRecord firstRecord, CSVRecord secondRecord) {
+		
+		if (firstRecord == null) {
+			if (Double.parseDouble(secondRecord.get(TEMPERATURE_F)) <= -9999) {
+				return null;
+			} else {
+				return secondRecord;
+			}
+		} else {
+			double coldestTemperature = Double.parseDouble(firstRecord.get(TEMPERATURE_F));
+			double currentMinimTemperature = Double.parseDouble(secondRecord.get(TEMPERATURE_F));
+			
+			if ((currentMinimTemperature < coldestTemperature) && (currentMinimTemperature > -9999)) {
+				return secondRecord;
+			} else {
+				return firstRecord;
+			}
+		}
+	}
+	
+	public void testHottestHourInFile() {
 		
 		FileResource fileResource = new FileResource("nc_weather/2015/weather-2015-01-01.csv");
 		CSVParser parser = fileResource.getCSVParser();
 		CSVRecord hottestHourRecord = hottestHourInFile(parser);
 		
 		System.out.println("Hottest temperature was " + hottestHourRecord.get(TEMPERATURE_F) + " at " + hottestHourRecord.get(TIME_EST));
+	}
+	
+	public void testColdestHourInFile() {
+		
+		FileResource fileResource = new FileResource("nc_weather/2015/weather-2015-01-01.csv");
+		CSVParser parser = fileResource.getCSVParser();
+		CSVRecord coldestHourRecord = coldestHourInFile(parser);
+		
+		System.out.println("Coldest temperature was " + coldestHourRecord.get(TEMPERATURE_F) + " at " + coldestHourRecord.get(TIME_EST));
 	}
 	
 	public void testHottestHourInManyDays() {
@@ -113,5 +168,6 @@ public class ParsingWeatherData {
 		
 		parsingWeatherData.testHottestHourInFile();
 		parsingWeatherData.testHottestHourInManyDays();
+		parsingWeatherData.testColdestHourInFile();
 	}
 }
