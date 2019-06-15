@@ -87,6 +87,24 @@ public class ParsingWeatherData {
 		
 		return coldestHourRecord;
 	}
+	
+	/**
+	 * This method returns the CSVRecord that has the lowest humidity
+	 * 
+	 * @param	parser
+	 * @return
+	 */
+	public CSVRecord lowestHumidityInFile(CSVParser parser) {
+		
+		CSVRecord lowestHumidityHourRecord = null;
+		
+		for (CSVRecord currentRecord : parser) {
+			
+			lowestHumidityHourRecord = getLowestHumidityHourRecord (lowestHumidityHourRecord, currentRecord);
+		}
+		
+		return lowestHumidityHourRecord;
+	}
 
 	/**
 	 * This method chooses, out of two, the record with the hottest temperature
@@ -121,19 +139,63 @@ public class ParsingWeatherData {
 	public CSVRecord getColdestHourRecord(CSVRecord firstRecord, CSVRecord secondRecord) {
 		
 		if (firstRecord == null) {
+			
 			if (Double.parseDouble(secondRecord.get(TEMPERATURE_F)) <= -9999) {
+				
 				return null;
 			} else {
+				
 				return secondRecord;
 			}
 		} else {
-			double coldestTemperature = Double.parseDouble(firstRecord.get(TEMPERATURE_F));
-			double currentMinimTemperature = Double.parseDouble(secondRecord.get(TEMPERATURE_F));
 			
-			if ((currentMinimTemperature < coldestTemperature) && (currentMinimTemperature > -9999)) {
+			double coldestTemperature = Double.parseDouble(firstRecord.get(TEMPERATURE_F));
+			double currentTemperature = Double.parseDouble(secondRecord.get(TEMPERATURE_F));
+			
+			if ((currentTemperature < coldestTemperature) && (currentTemperature > -9999)) {
+				
 				return secondRecord;
 			} else {
+				
 				return firstRecord;
+			}
+		}
+	}
+	
+	/**
+	 * This method chooses, out of two, the record with the lowest humidity
+	 * 
+	 * @param	firstRecord
+	 * @param	secondRecord
+	 * @return
+	 */
+	public CSVRecord getLowestHumidityHourRecord(CSVRecord firstRecord, CSVRecord secondRecord) {
+		
+		if (firstRecord == null) {
+			
+			if (secondRecord.get(HUMIDITY) == "N/A") {
+				return null;
+			} else {
+				
+				return secondRecord;
+			}
+		} else {
+			
+			if (secondRecord.get(HUMIDITY) == "N/A") {
+				
+				return firstRecord;
+			} else {
+				
+				double lowestHumidity = Double.parseDouble(firstRecord.get(HUMIDITY));
+				double currentHumidity = Double.parseDouble(secondRecord.get(HUMIDITY));
+				
+				if (currentHumidity < lowestHumidity) {
+					
+					return secondRecord;
+				} else {
+					
+					return firstRecord;
+				}
 			}
 		}
 	}
@@ -169,6 +231,9 @@ public class ParsingWeatherData {
 		return coldestHourRecordFile;
 	}
 	
+	/**
+	 * Tests {@link #hottestHourInFile(CSVParser)}
+	 */
 	public void testHottestHourInFile() {
 		
 		FileResource fileResource = new FileResource("nc_weather/2015/weather-2015-01-01.csv");
@@ -178,21 +243,30 @@ public class ParsingWeatherData {
 		System.out.println("Hottest temperature was " + hottestHourRecord.get(TEMPERATURE_F) + " at " + hottestHourRecord.get(TIME_EST));
 	}
 	
+	/**
+	 * Tests {@link #coldestHourInFile(CSVParser)}
+	 */
 	public void testColdestHourInFile() {
 		
-		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-01-30.csv");
+		FileResource fileResource = new FileResource("nc_weather/2015/weather-2015-01-01.csv");
 		CSVParser parser = fileResource.getCSVParser();
 		CSVRecord coldestHourRecord = coldestHourInFile(parser);
 		
 		System.out.println("Coldest temperature was " + coldestHourRecord.get(TEMPERATURE_F) + " at " + coldestHourRecord.get(TIME_EST));
 	}
 	
+	/**
+	 * Tests {@link #hottestHourInManyDays()}
+	 */
 	public void testHottestHourInManyDays() {
 		
 		CSVRecord hottestHourRecord = hottestHourInManyDays();
 		System.out.println("Hottest temperature was " + hottestHourRecord.get(TEMPERATURE_F) + " at " + hottestHourRecord.get(DATE_UTC));
 	}
 	
+	/**
+	 * Tests {@link #fileWithColdestTemperature()}
+	 */
 	public void testFileWithColdestTemperature() {
 		
 		String coldestDayFile = fileWithColdestTemperature();
@@ -210,15 +284,32 @@ public class ParsingWeatherData {
 			System.out.println(currentRecord.get(DATE_UTC) + ": " + currentRecord.get(TEMPERATURE_F));
 		}
 	}
+	
+	/**
+	 * Tests {@link #lowestHumidityInFile(CSVParser)}
+	 */
+	public void testLowestHumidityInFile() {
+		
+		FileResource fileResource = new FileResource();
+		CSVParser parser = fileResource.getCSVParser();
+		CSVRecord csvRecord = lowestHumidityInFile(parser);
+		
+		System.out.println("Lowest Humidity was " + csvRecord.get(HUMIDITY) + " at " + csvRecord.get(DATE_UTC));
+	}
 
 	public static void main(String[] args) {
 		
 		ParsingWeatherData parsingWeatherData = new ParsingWeatherData();
 		
 		parsingWeatherData.testHottestHourInFile();
+		System.out.println("");
 		parsingWeatherData.testHottestHourInManyDays();
+		System.out.println("");
 		parsingWeatherData.testColdestHourInFile();
+		System.out.println("");
 		parsingWeatherData.testFileWithColdestTemperature();
-		;
+		System.out.println("");
+		parsingWeatherData.testLowestHumidityInFile();
+		System.out.println("");
 	}
 }
