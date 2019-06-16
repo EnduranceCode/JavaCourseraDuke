@@ -255,6 +255,36 @@ public class ParsingWeatherData {
 	}
 	
 	/**
+	 * This method returns a double that represents the average temperature in the file
+	 * 
+	 * @param	parser
+	 * @return
+	 */
+	public Double averageTemperatureInFile(CSVParser parser) {
+		
+		Double sumTemperature = 0.0;
+		int countTemperature = 0;
+		Double averageTemperature = 0.0;
+		
+		for (CSVRecord currentRecord : parser) {
+			
+			Double currentTemperature = Double.parseDouble(currentRecord.get(TEMPERATURE_F));
+			
+			if (currentTemperature != -9999) {
+				
+				countTemperature += 1;
+				sumTemperature = sumTemperature + currentTemperature;
+			}
+		}
+		
+		if (countTemperature != 0) {
+			averageTemperature = sumTemperature / countTemperature;
+		}
+		
+		return averageTemperature;
+	}
+	
+	/**
 	 * Tests {@link #hottestHourInFile(CSVParser)}
 	 */
 	public void testHottestHourInFile() {
@@ -329,6 +359,17 @@ public class ParsingWeatherData {
 		
 		System.out.println("Lowest Humidity was " + lowestHumidityHourRecord.get(HUMIDITY) + " at " + lowestHumidityHourRecord.get(DATE_UTC));
 	}
+	
+	/**
+	 * Tests {@link #averageTemperatureInFile(CSVParser)}
+	 */
+	public void testAverageTemperatureInFile() {
+		
+		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
+		CSVParser csvParser = fileResource.getCSVParser();
+		
+		System.out.println("Average temperature in file is " + averageTemperatureInFile(csvParser));
+	}
 
 	public static void main(String[] args) {
 		
@@ -345,6 +386,8 @@ public class ParsingWeatherData {
 		parsingWeatherData.testLowestHumidityInFile();
 		System.out.println();
 		parsingWeatherData.testLowestHumidityInManyFiles();
+		System.out.println();
+		parsingWeatherData.testAverageTemperatureInFile();
 		System.out.println();
 	}
 }
