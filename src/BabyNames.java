@@ -1,9 +1,9 @@
 import java.io.File;
 
+import org.apache.commons.csv.CSVRecord;
+
 import edu.duke.DirectoryResource;
 import edu.duke.FileResource;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 
 public class BabyNames {
 	
@@ -148,6 +148,27 @@ public class BabyNames {
 		return newName;
 	}
 	
+	public int yearOfHighestRank(String name, String gender) {
+		
+		int yearOfHighestRank = -1;
+		
+		DirectoryResource directoryResource = new DirectoryResource();
+		
+		for (File file : directoryResource.selectedFiles()) {
+			
+			int currentYear = Integer.parseInt(file.getName().substring(3,7));
+			
+			int currentRank = getRank(currentYear, name, gender);
+			
+			if (currentRank > yearOfHighestRank) {
+				
+				yearOfHighestRank = currentYear;
+			}
+		}
+		
+		return yearOfHighestRank;
+	}
+	
 	/**
 	 * Calculate the total number of males births registered in the given data file
 	 * 
@@ -280,6 +301,13 @@ public class BabyNames {
 		
 		System.out.println(name + " born in " + year + " would be " + newName + " if she was born in " + newYear);
 	}
+	
+	public void testYearOfHighestRank(String name, String gender) {
+		
+		int yearOfHighestRank = yearOfHighestRank(name, gender);
+		
+		System.out.println("The of highest rank, in the given files, of the name " + name + " with gender " + gender + " is " + yearOfHighestRank);
+	}
 
 	public static void main(String[] args) {
 		
@@ -292,6 +320,8 @@ public class BabyNames {
 		babyNames.testGetName();
 		System.out.println();
 		babyNames.testWhatIsNameInYear("Isabella", 2012, 2014, "F");
+		System.out.println();
+		babyNames.testYearOfHighestRank("Mason", "M");
 		System.out.println();
 	}
 
