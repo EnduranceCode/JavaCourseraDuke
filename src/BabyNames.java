@@ -222,6 +222,44 @@ public class BabyNames {
 	}
 	
 	/**
+	 * This method returns an integer, the total number of births of those names
+	 * with the same gender and same year who are ranked higher than name
+	 * 
+	 * @param	year
+	 * @param	name
+	 * @param	gender
+	 * @return
+	 */
+	public int getTotalBirthsRankedHigher(int year, String name, String gender) {
+		
+		int totalBirthsRankedHigher = 0;
+		
+		int limitRecordNumber = 0;
+		
+		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
+		
+		if (gender.equals("F")) {
+			
+			limitRecordNumber = getRank(year, name, gender);
+			System.out.println("Limit Record Number: " + limitRecordNumber);
+		} else {
+			
+			limitRecordNumber = getRank(year, name, gender) + numberNamesFemale(fileResource);
+			System.out.println("Limit Record Number: " + limitRecordNumber);
+		}
+		
+		for (CSVRecord csvCurrentRecord : fileResource.getCSVParser(false)) {
+			
+			if (csvCurrentRecord.get(GENDER).equals(gender) && (int) csvCurrentRecord.getRecordNumber() < limitRecordNumber) {
+				
+				totalBirthsRankedHigher += Integer.parseInt(csvCurrentRecord.get(QUANTITY));
+			}
+		}
+		
+		return totalBirthsRankedHigher;
+	}
+	
+	/**
 	 * Calculate the total number of males births registered in the given data file
 	 * 
 	 * @param	fileResource
@@ -316,9 +354,9 @@ public class BabyNames {
 	/**
 	 * Tests {@link #getRank(int, String, String)}
 	 */
-	public void testGetRank() {
+	public void testGetRank(int year, String name, String gender) {
 		
-		int rank = getRank(2012, "Mason", "M");
+		int rank = getRank(year, name, gender);
 		
 		if (rank == -1) {
 			
@@ -332,9 +370,9 @@ public class BabyNames {
 	/**
 	 * Tests {@link #getName(int, int, String)}
 	 */
-	public void testGetName() {
+	public void testGetName(int year, int rank, String gender) {
 		
-		String name = getName(2012, 2, "M");
+		String name = getName(year, rank, gender);
 		
 		System.out.println("The name with the given rank in the given file is " + name);
 	}
@@ -354,6 +392,12 @@ public class BabyNames {
 		System.out.println(name + " born in " + year + " would be " + newName + " if she was born in " + newYear);
 	}
 	
+	/**
+	 * Test {@link #yearOfHighestRank(String, String)}
+	 * 
+	 * @param	name
+	 * @param	gender
+	 */
 	public void testYearOfHighestRank(String name, String gender) {
 		
 		int yearOfHighestRank = yearOfHighestRank(name, gender);
@@ -361,6 +405,12 @@ public class BabyNames {
 		System.out.println("The of highest rank, in the given files, of the name " + name + " with gender " + gender + " is " + yearOfHighestRank);
 	}
 	
+	/**
+	 * Tests {@link #getAverageRank(String, String)}
+	 * 
+	 * @param	name
+	 * @param	gender
+	 */
 	public void testGetAverageRank(String name, String gender) {
 		
 		double averageRank = getAverageRank(name, gender);
@@ -372,6 +422,20 @@ public class BabyNames {
 			System.out.println("The average rank for " + name + " of the gender " + gender + " is " + averageRank);
 		}
 	}
+	
+	/**
+	 * Tests {@link #getTotalBirthsRankedHigher(int, String, String)}
+	 * 
+	 * @param	year
+	 * @param	name
+	 * @param	gender
+	 */
+	public void testGetTotalBirthsRankedHigher(int year, String name, String gender) {
+		
+		int totalBirthsRankedHigher = getTotalBirthsRankedHigher(year, name, gender);
+		
+		System.out.println("Total births whose name ranks higher than " + name + " is " + totalBirthsRankedHigher);
+	}
 
 	public static void main(String[] args) {
 		
@@ -379,9 +443,9 @@ public class BabyNames {
 		
 		babyNames.testTotalBirths();
 		System.out.println();
-		babyNames.testGetRank();
+		babyNames.testGetRank(2012, "Mason", "M");
 		System.out.println();
-		babyNames.testGetName();
+		babyNames.testGetName(2012, 2, "M");
 		System.out.println();
 		babyNames.testWhatIsNameInYear("Isabella", 2012, 2014, "F");
 		System.out.println();
@@ -390,6 +454,8 @@ public class BabyNames {
 		babyNames.testGetAverageRank("Mason", "M");
 		System.out.println();
 		babyNames.testGetAverageRank("Jacob", "M");
+		System.out.println();
+		babyNames.testGetTotalBirthsRankedHigher(2012, "Ethan","M");
 		System.out.println();
 	}
 
