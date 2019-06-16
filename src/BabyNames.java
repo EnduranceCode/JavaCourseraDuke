@@ -436,6 +436,36 @@ public class BabyNames {
 		
 		System.out.println("Total births whose name ranks higher than " + name + " is " + totalBirthsRankedHigher);
 	}
+	
+	/**
+	 * Tests {@link #numberNamesFemale(FileResource)}
+	 * @param year
+	 */
+	public void testNumberNamesFemale(int year) {
+		
+		int numberNamesFemale = 0;
+		
+		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
+		
+		numberNamesFemale = numberNamesFemale(fileResource);
+		
+		System.out.println("Number of girl's names in the file yob" + year + ".csv is " + numberNamesFemale);
+	}
+	
+	/**
+	 * Tests {@link #numberNamesFemale(FileResource)}
+	 * @param year
+	 */
+	public void testNumberNamesMale(int year) {
+		
+		int numberNamesMale = 0;
+		
+		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
+		
+		numberNamesMale = numberNamesMale(fileResource);
+		
+		System.out.println("Number of girl's names in the file yob" + year + ".csv is " + numberNamesMale);
+	}
 
 	public static void main(String[] args) {
 		
@@ -456,6 +486,50 @@ public class BabyNames {
 		babyNames.testGetAverageRank("Jacob", "M");
 		System.out.println();
 		babyNames.testGetTotalBirthsRankedHigher(2012, "Ethan","M");
+		System.out.println();
+		System.out.println("Final Quiz Answers");
+		System.out.println();
+		System.out.println("QUESTION 1:");
+		babyNames.testNumberNamesFemale(1900);
+		System.out.println();
+		System.out.println("QUESTION 2:");
+		babyNames.testNumberNamesMale(1905);
+		System.out.println();
+		System.out.println("QUESTION 3:");
+		babyNames.testGetRank(1960, "Emily", "F");
+		System.out.println();
+		System.out.println("QUESTION 4:");
+		babyNames.testGetRank(1971, "Frank", "M");
+		System.out.println();
+		System.out.println("QUESTION 5:");
+		babyNames.testGetName(1980, 350, "F");
+		System.out.println();
+		System.out.println("QUESTION 6:");
+		babyNames.testGetName(1982, 450, "M");
+		System.out.println();
+		System.out.println("QUESTION 7:");
+		babyNames.testWhatIsNameInYear("Susan", 1972, 2014, "F");
+		System.out.println();
+		System.out.println("QUESTION 8:");
+		babyNames.testWhatIsNameInYear("Owen", 1974, 2014, "M");
+		System.out.println();
+		System.out.println("QUESTION 9:");
+		babyNames.testYearOfHighestRank("Genevieve", "F");
+		System.out.println();
+		System.out.println("QUESTION 10:");
+		babyNames.testYearOfHighestRank("Mich", "M");
+		System.out.println();
+		System.out.println("QUESTION 11:");
+		babyNames.testGetAverageRank("Susan", "F");
+		System.out.println();
+		System.out.println("QUESTION 12:");
+		babyNames.testGetAverageRank("Robert", "M");
+		System.out.println();
+		System.out.println("QUESTION 13:");
+		babyNames.testGetTotalBirthsRankedHigher(1990, "Emily", "F");
+		System.out.println();
+		System.out.println("QUESTION 14:");
+		babyNames.testGetTotalBirthsRankedHigher(1990, "Drew", "M");
 		System.out.println();
 	}
 
