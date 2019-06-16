@@ -113,6 +113,42 @@ public class BabyNames {
 	}
 	
 	/**
+	 * This method determines what name would have been named if they were born in a different year,
+	 * based on the same popularity
+	 * 
+	 * @param	name
+	 * @param	year
+	 * @param	newYear
+	 * @param	gender
+	 * @return
+	 */
+	public String whatIsNameInYear(String name, int year, int newYear, String gender) {
+		
+		String newName = "There is no name with the same ranking in the given new year";
+		
+		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
+		
+		int rank = 0;
+		
+		for (CSVRecord csvCurrentRecord : fileResource.getCSVParser(false)) {
+			
+			if (csvCurrentRecord.get(NAME).equals(name) && csvCurrentRecord.get(GENDER).equals(gender)) {
+				if (gender.equals("M")) {
+					
+					rank = (int) csvCurrentRecord.getRecordNumber() - numberNamesFemale(fileResource);
+				} else {
+					
+					rank = (int) csvCurrentRecord.getRecordNumber();
+				}
+			}
+		}
+		
+		newName = getName(newYear, rank, gender);
+		
+		return newName;
+	}
+	
+	/**
 	 * Calculate the total number of males births registered in the given data file
 	 * 
 	 * @param	fileResource
@@ -229,6 +265,21 @@ public class BabyNames {
 		
 		System.out.println("The name with the given rank in the given file is " + name);
 	}
+	
+	/**
+	 * Tests {@link #whatIsNameInYear(String, int, int, String)}
+	 * 
+	 * @param	name
+	 * @param	year
+	 * @param	newYear
+	 * @param	gender
+	 */
+	public void testWhatIsNameInYear(String name, int year, int newYear, String gender) {
+		
+		String newName = whatIsNameInYear(name, year, newYear, gender);
+		
+		System.out.println(name + " born in " + year + " would be " + newName + " if she was born in " + newYear);
+	}
 
 	public static void main(String[] args) {
 		
@@ -239,6 +290,8 @@ public class BabyNames {
 		babyNames.testGetRank();
 		System.out.println();
 		babyNames.testGetName();
+		System.out.println();
+		babyNames.testWhatIsNameInYear("Isabella", 2012, 2014, "F");
 		System.out.println();
 	}
 
