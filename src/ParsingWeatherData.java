@@ -389,6 +389,18 @@ public class ParsingWeatherData {
 		CSVRecord csvRecord = lowestHumidityInFile(parser);
 		
 		System.out.println("Lowest Humidity was " + csvRecord.get(HUMIDITY) + " at " + csvRecord.get(DATE_UTC));
+		
+		fileResource = new FileResource("nc_weather/2014/weather-2014-06-29.csv");
+		parser = fileResource.getCSVParser();
+		csvRecord = lowestHumidityInFile(parser);
+		
+		System.out.println("FINAL QUIZ - QUESTION 4: Lowest Humidity was " + csvRecord.get(HUMIDITY) + " at " + csvRecord.get(DATE_UTC));
+		
+		fileResource = new FileResource("nc_weather/2014/weather-2014-07-22.csv");
+		parser = fileResource.getCSVParser();
+		csvRecord = lowestHumidityInFile(parser);
+		
+		System.out.println("FINAL QUIZ - QUESTION 5: Lowest Humidity was " + csvRecord.get(HUMIDITY) + " at " + csvRecord.get(DATE_UTC));
 	}
 	
 	/**
@@ -410,6 +422,11 @@ public class ParsingWeatherData {
 		CSVParser csvParser = fileResource.getCSVParser();
 		
 		System.out.println("Average temperature in file is " + averageTemperatureInFile(csvParser));
+		
+		fileResource = new FileResource("nc_weather/2013/weather-2013-08-10.csv");
+		csvParser = fileResource.getCSVParser();
+		
+		System.out.println("FINAL QUIZ - QUESTION 8: Average temperature in file is " + averageTemperatureInFile(csvParser));
 	}
 	
 	/**
@@ -421,12 +438,15 @@ public class ParsingWeatherData {
 		
 		FileResource file20140120 = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
 		FileResource file20140320 = new FileResource("nc_weather/2014/weather-2014-03-30.csv");
+		FileResource file20130902 = new FileResource("nc_weather/2013/weather-2013-09-02.csv");
 		
 		CSVParser parser20140120 = file20140120.getCSVParser();
 		CSVParser parser20140320 = file20140320.getCSVParser();
+		CSVParser parser20130902 = file20130902.getCSVParser();
 		
 		Double averageTemperature20140120 = averageTemperatureWithHighHumidityInFile(parser20140120, VALUE);
 		Double averageTemperature20140320 = averageTemperatureWithHighHumidityInFile(parser20140320, VALUE);
+		Double averageTemperature20130902 = averageTemperatureWithHighHumidityInFile(parser20130902, VALUE);
 		
 		if (averageTemperature20140120 == -9999) {
 			
@@ -442,6 +462,14 @@ public class ParsingWeatherData {
 		} else {
 			
 			System.out.println("Average Temp when high Humidity is " + averageTemperature20140320);
+		}
+		System.out.println();
+		if (averageTemperature20130902 == -9999) {
+			
+			System.out.println("FINAL QUIZ - QUESTION 9: No temperatures with that humidity");
+		} else {
+			
+			System.out.println("FINAL QUIZ - QUESTION 9: Average Temp when high Humidity is " + averageTemperature20130902);
 		}
 	}
 
