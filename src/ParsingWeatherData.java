@@ -330,11 +330,11 @@ public class ParsingWeatherData {
 	 */
 	public void testHottestHourInFile() {
 		
-		FileResource fileResource = new FileResource("nc_weather/2015/weather-2015-01-01.csv");
+		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-05-01.csv");
 		CSVParser parser = fileResource.getCSVParser();
 		CSVRecord hottestHourRecord = hottestHourInFile(parser);
 		
-		System.out.println("Hottest temperature was " + hottestHourRecord.get(TEMPERATURE_F) + " at " + hottestHourRecord.get(TIME_EST));
+		System.out.println("Hottest temperature was " + hottestHourRecord.get(TEMPERATURE_F) + " at " + hottestHourRecord.get(DATE_UTC));
 	}
 	
 	/**
@@ -342,11 +342,11 @@ public class ParsingWeatherData {
 	 */
 	public void testColdestHourInFile() {
 		
-		FileResource fileResource = new FileResource("nc_weather/2015/weather-2015-01-01.csv");
+		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-05-01.csv");
 		CSVParser parser = fileResource.getCSVParser();
 		CSVRecord coldestHourRecord = coldestHourInFile(parser);
 		
-		System.out.println("Coldest temperature was " + coldestHourRecord.get(TEMPERATURE_F) + " at " + coldestHourRecord.get(TIME_EST));
+		System.out.println("Coldest temperature was " + coldestHourRecord.get(TEMPERATURE_F) + " at " + coldestHourRecord.get(DATE_UTC));
 	}
 	
 	/**
@@ -384,7 +384,7 @@ public class ParsingWeatherData {
 	 */
 	public void testLowestHumidityInFile() {
 		
-		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
+		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-04-01.csv");
 		CSVParser parser = fileResource.getCSVParser();
 		CSVRecord csvRecord = lowestHumidityInFile(parser);
 		
@@ -406,7 +406,7 @@ public class ParsingWeatherData {
 	 */
 	public void testAverageTemperatureInFile() {
 		
-		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
+		FileResource fileResource = new FileResource("nc_weather/2014/weather-2014-06-01.csv");
 		CSVParser csvParser = fileResource.getCSVParser();
 		
 		System.out.println("Average temperature in file is " + averageTemperatureInFile(csvParser));
@@ -420,7 +420,7 @@ public class ParsingWeatherData {
 		final int VALUE = 80; 
 		
 		FileResource file20140120 = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
-		FileResource file20140320 = new FileResource("nc_weather/2014/weather-2014-03-20.csv");
+		FileResource file20140320 = new FileResource("nc_weather/2014/weather-2014-03-30.csv");
 		
 		CSVParser parser20140120 = file20140120.getCSVParser();
 		CSVParser parser20140320 = file20140320.getCSVParser();
