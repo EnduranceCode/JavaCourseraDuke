@@ -277,11 +277,52 @@ public class ParsingWeatherData {
 			}
 		}
 		
-		if (countTemperature != 0) {
+		if (countTemperature == 0) {
+			
+			averageTemperature = -9999.0;
+		} else {
+				
 			averageTemperature = sumTemperature / countTemperature;
 		}
 		
 		return averageTemperature;
+	}
+	
+	/**
+	 * This method returns a double that represents the average temperature of only those temperatures
+	 * when the humidity was greater than or equal to the given value
+	 * 
+	 * @param	parser
+	 * @param	value
+	 * @return
+	 */
+	public Double averageTemperatureWithHighHumidityInFile(CSVParser parser, int value) {
+		
+		Double sumTemperatureWithHightHumidity = 0.0;
+		int countTemperatureWithHightHumidity = 0;
+		Double averageTemperatureWithHighHumidity = 0.0;
+		
+		for (CSVRecord currentRecord : parser) {
+			
+			Double currentTemperature = Double.parseDouble(currentRecord.get(TEMPERATURE_F));
+			Double currentHumidity = Double.parseDouble(currentRecord.get(HUMIDITY));
+			
+			if (currentTemperature != -9999 && currentHumidity > value) {
+				
+				countTemperatureWithHightHumidity += 1;
+				sumTemperatureWithHightHumidity += currentTemperature;
+			}
+		}
+		
+		if (countTemperatureWithHightHumidity == 0) {
+			
+			averageTemperatureWithHighHumidity = -9999.0;
+		} else {
+			
+			averageTemperatureWithHighHumidity = sumTemperatureWithHightHumidity / countTemperatureWithHightHumidity;
+		}
+		
+		return averageTemperatureWithHighHumidity;
 	}
 	
 	/**
@@ -370,6 +411,39 @@ public class ParsingWeatherData {
 		
 		System.out.println("Average temperature in file is " + averageTemperatureInFile(csvParser));
 	}
+	
+	/**
+	 * Tests {@link #averageTemperatureWithHighHumidityInFile(CSVParser, int)}
+	 */
+	public void testAverageTemperatureWithHighHumidityInFile() {
+		
+		final int VALUE = 80; 
+		
+		FileResource file20140120 = new FileResource("nc_weather/2014/weather-2014-01-20.csv");
+		FileResource file20140320 = new FileResource("nc_weather/2014/weather-2014-03-20.csv");
+		
+		CSVParser parser20140120 = file20140120.getCSVParser();
+		CSVParser parser20140320 = file20140320.getCSVParser();
+		
+		Double averageTemperature20140120 = averageTemperatureWithHighHumidityInFile(parser20140120, VALUE);
+		Double averageTemperature20140320 = averageTemperatureWithHighHumidityInFile(parser20140320, VALUE);
+		
+		if (averageTemperature20140120 == -9999) {
+			
+			System.out.println("No temperatures with that humidity");
+		} else {
+			
+			System.out.println("Average Temp when high Humidity is " + averageTemperature20140120);
+		}
+		System.out.println();
+		if (averageTemperature20140320 == -9999) {
+			
+			System.out.println("No temperatures with that humidity");
+		} else {
+			
+			System.out.println("Average Temp when high Humidity is " + averageTemperature20140320);
+		}
+	}
 
 	public static void main(String[] args) {
 		
@@ -388,6 +462,8 @@ public class ParsingWeatherData {
 		parsingWeatherData.testLowestHumidityInManyFiles();
 		System.out.println();
 		parsingWeatherData.testAverageTemperatureInFile();
+		System.out.println();
+		parsingWeatherData.testAverageTemperatureWithHighHumidityInFile();
 		System.out.println();
 	}
 }
