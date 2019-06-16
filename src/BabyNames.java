@@ -76,6 +76,43 @@ public class BabyNames {
 	}
 	
 	/**
+	 * This method returns the name of the person in the file at this rank, for the given gender,
+	 * where rank 1 is the name with the largest number of births.
+	 * If the rank does not exist in the file, then “NO NAME” is returned.
+	 * 
+	 * @param	year
+	 * @param	rank
+	 * @param	gender
+	 * @return
+	 */
+	public String getName(int year, int rank, String gender) {
+		
+		String name = "NO NAME";
+		
+		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
+		
+		int recordNumber = 0;
+		
+		if (gender.equals("M")) {
+			
+			recordNumber = numberNamesFemale(fileResource) + rank;
+		} else {
+			
+			recordNumber = rank;
+		}
+		
+		for (CSVRecord csvCurrentRecord : fileResource.getCSVParser(false)) {
+			
+			if ((int) csvCurrentRecord.getRecordNumber() == recordNumber) {
+				
+				name = csvCurrentRecord.get(NAME);
+			}
+		}
+		
+		return name;
+	}
+	
+	/**
 	 * Calculate the total number of males births registered in the given data file
 	 * 
 	 * @param	fileResource
@@ -182,6 +219,16 @@ public class BabyNames {
 			System.out.println("The rank of the given name in the given year file is " + rank);
 		}
 	}
+	
+	/**
+	 * Tests {@link #getName(int, int, String)}
+	 */
+	public void testGetName() {
+		
+		String name = getName(2012, 2, "M");
+		
+		System.out.println("The name with the given rank in the given file is " + name);
+	}
 
 	public static void main(String[] args) {
 		
@@ -190,6 +237,8 @@ public class BabyNames {
 		babyNames.testTotalBirths();
 		System.out.println();
 		babyNames.testGetRank();
+		System.out.println();
+		babyNames.testGetName();
 		System.out.println();
 	}
 
