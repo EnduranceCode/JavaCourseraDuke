@@ -54,6 +54,9 @@ public class BabyNames {
 	 */
 	public int getRank(int year, String name, String gender) {
 		
+		/* The default value is set to -1 because it is the value that method should return
+		 * if the given name and gender aren't found in the given year
+		 */
 		int rank = -1;
 		
 		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
@@ -87,6 +90,9 @@ public class BabyNames {
 	 */
 	public String getName(int year, int rank, String gender) {
 		
+		/* The default value is set to 'NO NAME' because it is the value that method should return
+		 * if the given rank and gender aren't found in the given year
+		 */
 		String name = "NO NAME";
 		
 		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
@@ -124,6 +130,7 @@ public class BabyNames {
 	 */
 	public String whatIsNameInYear(String name, int year, int newYear, String gender) {
 		
+		/* Set the default value for the methor renurt if no name is found */
 		String newName = "There is no name with the same ranking in the given new year";
 		
 		FileResource fileResource = new FileResource("data/us_babynames_by_year/yob" + year + ".csv");
@@ -150,6 +157,9 @@ public class BabyNames {
 	
 	public int yearOfHighestRank(String name, String gender) {
 		
+		/* The default value is set to -1 because it is the value that method should return
+		 * if the given name and gender aren't found in the given files
+		 */
 		int yearOfHighestRank = -1;
 		
 		DirectoryResource directoryResource = new DirectoryResource();
@@ -167,6 +177,48 @@ public class BabyNames {
 		}
 		
 		return yearOfHighestRank;
+	}
+	
+	/**
+	 * This method selects a range of files to process and returns a double representing the
+	 * average rank of the name and gender over the selected files.
+	 * It returns -1.0 if the name is not ranked in any of the selected files.
+	 * 
+	 * @param name
+	 * @param gender
+	 * @return
+	 */
+	public double getAverageRank(String name, String gender) {
+		
+		/* The default value is set to -1.0 because it is the value that method should return
+		 * if the given name and gender aren't found in the given files
+		 */
+		double averageRank = -1.0;
+		
+		int sumRank = 0;
+		int countYears = 0;
+		
+		DirectoryResource directoryResource = new DirectoryResource();
+		
+		for (File file : directoryResource.selectedFiles()) {
+			
+			int currentYear = Integer.parseInt(file.getName().substring(3, 7));
+			
+			int currentRank = getRank(currentYear, name, gender);
+			
+			if (currentRank != -1) {
+				
+				sumRank += currentRank;
+				countYears += 1;
+			}
+		}
+		
+		if (countYears != 0) {
+			
+			averageRank = (double) sumRank / countYears;
+		}
+		
+		return averageRank;
 	}
 	
 	/**
@@ -308,6 +360,18 @@ public class BabyNames {
 		
 		System.out.println("The of highest rank, in the given files, of the name " + name + " with gender " + gender + " is " + yearOfHighestRank);
 	}
+	
+	public void testGetAverageRank(String name, String gender) {
+		
+		double averageRank = getAverageRank(name, gender);
+		
+		if (averageRank == -1.0) {
+			
+			System.out.println("The given name and gender isn't ranked in the given files");
+		} else {
+			System.out.println("The average rank for " + name + " of the gender " + gender + " is " + averageRank);
+		}
+	}
 
 	public static void main(String[] args) {
 		
@@ -322,6 +386,10 @@ public class BabyNames {
 		babyNames.testWhatIsNameInYear("Isabella", 2012, 2014, "F");
 		System.out.println();
 		babyNames.testYearOfHighestRank("Mason", "M");
+		System.out.println();
+		babyNames.testGetAverageRank("Mason", "M");
+		System.out.println();
+		babyNames.testGetAverageRank("Jacob", "M");
 		System.out.println();
 	}
 
