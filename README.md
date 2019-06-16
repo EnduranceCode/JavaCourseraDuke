@@ -72,3 +72,9 @@ The code written for the assignment *Parsing Export Data* is stored in the branc
 #### Assignment: Parsing Weather Data
 
 The code written for the assignment *Parsing Weather Data* is stored in the branch [course1/week3/assignment-parsing-weather-data](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week3/assignment-parsing-weather-data).
+
+### Week 4 - Mini Project: Baby Names
+
+The code written for the mini project *Baby Names* is stored in the branch [course1/week4/project-baby-names](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week4/project-baby-names).
+
+For this mini project, it's provided data on baby names from the United States and it's necessary to write code to answer questions about given data. The data files give information on the first names of people born in a particular year. There is data from 1880 through 2014 on both boys and girls names. The data is stored in the folder `src/data`.
