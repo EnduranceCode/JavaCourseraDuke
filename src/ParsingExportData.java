@@ -97,7 +97,7 @@ public class ParsingExportData {
 		parser = fileResource.getCSVParser();
 
 		System.out.println("listExportersTwoProducts() Output:");
-		listExportersTwoProducts(parser, "gold", "diamonds");
+		listExportersTwoProducts(parser, "cotton", "diamonds");
 		System.out.println("\n");
 		
 		parser = fileResource.getCSVParser();
@@ -135,6 +135,24 @@ public class ParsingExportData {
 
 		System.out.println("bigExporters() Output for the Quiz:");
 		bigExporters(parserQuiz, "$999,999,999,999");
+		System.out.println("\n");
+		
+		CSVParser parserFinalQuiz = fileResourceQuiz.getCSVParser();
+		
+		System.out.println("listExportersTwoProducts() Output for the Final Quiz:");
+		listExportersTwoProducts(parserFinalQuiz, "cotton", "flowers");
+		System.out.println("\n");
+		
+		parserFinalQuiz = fileResourceQuiz.getCSVParser();
+
+		System.out.println("numberOfExporters() Output for the Final Quiz:");
+		System.out.println(numberOfExporters(parserFinalQuiz, "cocoa"));
+		System.out.println("\n");
+		
+		parserFinalQuiz = fileResourceQuiz.getCSVParser();
+
+		System.out.println("bigExporters() Output for the Final Quiz:");
+		bigExporters(parserFinalQuiz, "$999,999,999,999");
 		System.out.println("\n");
 	}
 
