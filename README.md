@@ -91,3 +91,7 @@ To create this project, I'll be working with a package called [Unfolding Maps](h
 As part of this package, the SQLite library (version 3.7.2) is included. UC San Diego and I gratefully acknowledge [xerial.org](https://xerial.org/) for creating this [Java library](https://bitbucket.org/xerial/sqlite-jdbc/) and [D. Richard Hipp](https://en.wikipedia.org/wiki/D._Richard_Hipp) for the development of SQLite.
 
 The project is separated into several parts, and I will be able to achieve project milestones as I work through the modules in the course. Throughout the project, UC San Diego has suggested extensions and ideas for adding extra features to this project.
+
+### Week 1
+
+No code was written in the first week of this course curriculum.
