@@ -78,3 +78,16 @@ The code written for the assignment *Parsing Weather Data* is stored in the bran
 The code written for the mini project *Baby Names* is stored in the branch [course1/week4/project-baby-names](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week4/project-baby-names).
 
 For this mini project, it's provided data on baby names from the United States and it's necessary to write code to answer questions about given data. The data files give information on the first names of people born in a particular year. There is data from 1880 through 2014 on both boys and girls names. The data is stored in the folder `src/data`.
+
+## Object Oriented Programming in Java
+
+The [Object Oriented Programming in Java](https://www.coursera.org/learn/object-oriented-java) is an intermediate Java course offered by 
+[UC San Diego](https://www.coursera.org/ucsd) through Coursera. This course is recommended to learners who have previous experience in software development or a background in computer science.  The goal is that by the end of this course the student feels empowered to create a Java program that’s more advanced than any of programs created in the past and that is personally interesting to the learner. In achieving this goal the student will also learn the fundamentals of [Object Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming), how to leverage the power of existing libraries, how to build graphical user interfaces, and how to use some core algorithms for searching and sorting data.
+
+This course is project-based and in the project for this course the student builds his own interactive visualization of a large dataset tagged by geospatial information. Both powerful and challenging, data visualization is one of the hot topics of modern computer science - as well as something that influences our world every day!
+
+To create this project, I'll be working with a package called [Unfolding Maps](http://unfoldingmaps.org/), which is a library for interactive maps and geovisualizations. It was developed by Till Nagel and the team at the [University of Applied Sciences Potsdam](https://www.en.fh-potsdam.de/) along with other contributors and we (UC San Diego and I) are grateful that they developed such a cool package that we can build on for this course.
+
+As part of this package, the SQLite library (version 3.7.2) is included. UC San Diego and I gratefully acknowledge [xerial.org](https://xerial.org/) for creating this [Java library](https://bitbucket.org/xerial/sqlite-jdbc/) and [D. Richard Hipp](https://en.wikipedia.org/wiki/D._Richard_Hipp) for the development of SQLite.
+
+The project is separated into several parts, and I will be able to achieve project milestones as I work through the modules in the course. Throughout the project, UC San Diego has suggested extensions and ideas for adding extra features to this project.
