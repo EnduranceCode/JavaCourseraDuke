@@ -95,3 +95,7 @@ The project is separated into several parts, and I will be able to achieve proje
 ### Week 1
 
 No code was written in the first week of this course curriculum.
+
+### Week 2
+
+The code written for this project during the second week of this course curriculum is stored in the branch [course3/week2/unfolding-maps](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course3/week2/unfolding-maps).
