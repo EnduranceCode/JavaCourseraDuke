@@ -15,9 +15,9 @@ There are four Courses in this Specialization:
 
 ## About this repository
 
-All the code written while taking the [Object Oriented Programming in Java Specialization](https://www.coursera.org/specializations/object-oriented-programming) will be stored in different branches of this repository. This approach is taken in order avoid having this [GitHub account](https://github.com/EnduranceCode) bloated and cluttered with many repositories holding very small projects.
+All the code written while taking the [Object Oriented Programming in Java Specialization](https://www.coursera.org/specializations/object-oriented-programming) will be stored in different folders of this repository. This approach is taken in order avoid having this [GitHub account](https://github.com/EnduranceCode) bloated and cluttered with many repositories holding very small projects.
 
-[Blue J](https://www.bluej.org/) will no be used in the coding tasks of this Specialization because the goal is to gain more proficiency with [Eclipse](https://www.eclipse.org) and therefore, all the necessary code will be written with Eclipse.
+[Blue J](https://www.bluej.org/) will not be used in the coding tasks of this Specialization because the goal is to gain more proficiency with [Eclipse](https://www.eclipse.org) and therefore, all the necessary code will be written with Eclipse.
 
 ## Java Programming: Solving Problems with Software
 
@@ -29,53 +29,53 @@ The documentation for the **Course Code Packages** *edu.duke* and *org.apache.co
 
 #### Getting Started
 
-The HelloWorld program is stored in the branch [course1/week1/hello-world](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/hello-world).
+The HelloWorld program is stored in the folder [C01W01-hello-world](./C01W01-hello-world) of this repository.
 
 #### Classes, Types and For Each Loops
 
-The support code for the video *For Each Loops* is stored in the branch [course1/week1/for-each-loops](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/for-each-loops).
+The support code for the video *For Each Loops* is stored in the folder [C01W01-for-each-loops](./C01W01-for-each-loops) of this repository.
 
 #### Seven Steps for Solving Programming Problems
 
-The support code for the video *Seven Steps in Action: Translating to Code* is stored in the branch [course1/week1/seven-steps](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/seven-steps).
+The support code for the video *Seven Steps in Action: Translating to Code* is stored in the folder [C01W01-seven-steps](./C01W01-seven-steps) of this repository.
 
-The code written for the exercise *Calculating the Perimeter of a Shape* is stored in the branch [course1/week1/calculating-perimeter](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week1/calculating-perimeter).
+The code written for the exercise *Calculating the Perimeter of a Shape* is stored in the branch [C01W01-calculating-perimeter](./C01W01-calculating-perimeter) of this repository.
 
 ### Week 2
 
 #### Finding a Gene in DNA
 
-The support code for the video *Translating into Code* is stored in the branch [course1/week2/find-gene-simple](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/find-gene-simple).
+The support code for the video *Translating into Code* is stored in the folder [C01W02-find-gene-simple](./C01W02-find-gene-simple) of this repository.
 
 #### Strings First Assignment
 
-The code written for the exercise *Finding a Gene in DNA* is stored in the branch [course1/week2/find-gene-assignment](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/find-gene-assignment).
+The code written for the exercise *Finding a Gene in DNA* is stored in the folder [C01W02-find-gene-assignment](./C01W02-find-gene-assignment) of this repository.
 
 #### Strings Second Assignment
 
-The code written for the exercise *Finding many Genes* is stored in the branch [course1/week2/find-many-genes-assignment](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/find-many-genes-assignment).
+The code written for the exercise *Finding many Genes* is stored in the folder [C01W02-find-many-genes-assignment](./C01W02-find-many-genes-assignment) of this repository.
 
 #### Practice Quiz: Debugging Code
 
-The code written to solve the Quizzes in the *Debugging Code* section is stored in the branch [course1/week2/debugging](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/debugging).
+The code written to solve the Quizzes in the *Debugging Code* section is stored in the branch [C01W02/debugging](./C01W02/debugging) of this repository.
 
 #### Strings Third Assignment
 
-The code written for the assignment *StorageResource Class* is stored in the branch [course1/week2/storage-resource-class](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week2/storage-resource-class).
+The code written for the assignment *StorageResource Class* is stored in the branch [C01W02-storage-resource-class](./C01W02-storage-resource-class) of this repository.
 
 ### Week 3
 
 #### Assignment: Parsing Export Data
 
-The code written for the assignment *Parsing Export Data* is stored in the branch [course1/week3/assignment-parsing-export-data](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week3/assignment-parsing-export-data).
+The code written for the assignment *Parsing Export Data* is stored in the branch [C01W03-assignment-parsing-export-data](./C01W03-assignment-parsing-export-data) of this repository.
 
 #### Assignment: Parsing Weather Data
 
-The code written for the assignment *Parsing Weather Data* is stored in the branch [course1/week3/assignment-parsing-weather-data](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week3/assignment-parsing-weather-data).
+The code written for the assignment *Parsing Weather Data* is stored in the branch [C01W03-assignment-parsing-weather-data](./C01W03-assignment-parsing-weather-data) of this repository.
 
 ### Week 4 - Mini Project: Baby Names
 
-The code written for the mini project *Baby Names* is stored in the branch [course1/week4/project-baby-names](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course1/week4/project-baby-names).
+The code written for the mini project *Baby Names* is stored in the branch [C01W04-project-baby-names](./C01W04-project-baby-names) of this repository.
 
 For this mini project, it's provided data on baby names from the United States and it's necessary to write code to answer questions about given data. The data files give information on the first names of people born in a particular year. There is data from 1880 through 2014 on both boys and girls names. The data is stored in the folder `src/data`.
 
@@ -98,4 +98,4 @@ No code was written in the first week of this course curriculum.
 
 ### Week 2
 
-The code written for this project during the second week of this course curriculum is stored in the branch [course3/week2/unfolding-maps](https://github.com/EnduranceCode/JavaCourseraDuke/tree/course3/week2/unfolding-maps).
+The code written for this project during the second week of this course curriculum is stored in the folder [C03W02-unfolding-maps](./C03W02-unfolding-maps) of this repository.
